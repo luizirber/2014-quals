@@ -1,4 +1,24 @@
-# Pevzner 2001 (original De Bruijn graph)
+# What it should contain:
+
+    - What is the basic procedure for overlap graph-based assembly (or string
+      graph assembly)?
+
+    - Compare the algorithms and data structures for building the overlap
+      graph from a large number of reads.
+
+    - What are the differences and disadvantages/advantages of the described
+      approaches over de Bruijn graph based assembly?
+
+    - How do the attached papers handle sequencing errors? How do they
+      simplify the graphs by removing tips and bubbles? How do they take
+      advantage of paired-end information?
+
+    - Please describe one possible direction for future research.
+
+
+# Paper reviews
+
+## Pevzner 2001 (original De Bruijn graph)
 
   - Avoid overlap step (O(n^2) if unoptimized)
   - Problems:
@@ -33,7 +53,7 @@
       - Paths are long artificial mate-reads -> rerun Eulerian superpath alg.
     * Build scaffolds, using DB data as 'bridges' between different contigs.
 
-# Myers 2005 (original string graph)
+## Myers 2005 (original string graph)
 
   - e: mean error rate of the read's sequence under an exponentially
     distributed arrival rate model
@@ -68,7 +88,7 @@
       - Find the minimum traversal counts that satisfy edge bounds
 
 
-# Velvet (paper 1):
+## Velvet (paper 1):
 
   - Techniques
     * de Bruijn graph
@@ -87,10 +107,18 @@
         merge the two nodes (and their twins),
         transfering arc, read and sequence information as appropriate
     * Error removal
+      - Removal of low coverage nodes. Remove errors, but:
+        * Are they genuine errors os biological variants?
+        * Errors need to be randomly distributed in reads
+          (not true for most sequencing technologies)
+      - Resolve topological features:
+        * tips
+        * bulges / bubbles
+        * erroneous connections
     * Resolution of repeats
       - with short read pairs
 
-# SGA (paper 3):
+## SGA (paper 3):
   - Techniques
     * String graph
     * FM-index (full-text minute-space index), derived from
@@ -100,7 +128,7 @@
     *  
   
 
-# ReadJoiner (paper 2):
+## ReadJoiner (paper 2):
 
   - Techniques:
     * integer encoding
@@ -132,5 +160,5 @@
     * assembly: build string graph and traverses it to output the contigs.
 
 
-# Fermi (paper 4):
+## Fermi (paper 4):
 
