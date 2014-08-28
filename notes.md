@@ -119,7 +119,7 @@
       - with short read pairs
 
 ## SGA (paper 3):
-  - Techniques
+ - Techniques
     * String graph
     * FM-index (full-text minute-space index), derived from
       compressed BWT (Burrows-Wheeler transform)
